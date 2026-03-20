@@ -20,3 +20,7 @@ export const bot = new Chat({
 bot.onNewMention(async (thread, _message) => {
   await thread.post('Hello from Discord!')
 })
+
+bot.onDirectMessage(async (thread, _message) => {
+  await thread.post('Hello from Discord!')
+})

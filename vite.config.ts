@@ -15,9 +15,4 @@ export default defineConfig({
     intlayer(),
   ],
   resolve: { tsconfigPaths: true },
-  build: {
-    rolldownOptions: {
-      external: ['zlib-sync'],
-    },
-  },
 })

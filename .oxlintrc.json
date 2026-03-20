@@ -94,6 +94,8 @@
     "oxc/no-optional-chaining": "off",
     "oxc/no-rest-spread-properties": "off",
 
+    "node/no-process-env": "off",
+
     "promise/always-return": "off",
     "promise/catch-or-return": "off",
 
@@ -186,12 +188,6 @@
         "vitest/prefer-to-be-truthy": "error",
         "vitest/require-local-test-context-for-concurrent-snapshots": "error",
         "vitest/warn-todo": "error"
-      }
-    },
-    {
-      "files": ["**/env.ts"],
-      "rules": {
-        "node/no-process-env": "off"
       }
     }
   ],

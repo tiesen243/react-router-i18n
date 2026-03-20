@@ -1,5 +1,3 @@
-// oxlint-disable node/no-process-env
-
 import alchemy from 'alchemy'
 import { Images, ReactRouter } from 'alchemy/cloudflare'
 import { GitHubComment } from 'alchemy/github'

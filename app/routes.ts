@@ -3,8 +3,9 @@ import type { RouteConfig } from '@react-router/dev/routes'
 import { index, prefix, route } from '@react-router/dev/routes'
 
 export default [
-  route('/api/image', './routes/api/image.ts'),
-  route('/api/webhooks/discord', './routes/api/webhooks/discord.ts'),
+  // route('/api/image', './routes/api/image.ts'),
+  route('/api/discord/webhook', './routes/api/discord/webhook.ts'),
+  route('/api/discord/gateway', './routes/api/discord/gateway.ts'),
 
   ...prefix('/:lang?', [
     index('./routes/_index.tsx'),

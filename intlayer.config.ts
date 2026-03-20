@@ -20,6 +20,7 @@ const config = {
       '**/*.{ts,tsx}',
       '!**/node_modules/**',
       '!**/app/routes/api/**',
+      '!**/app/lib/**',
     ],
   },
 } satisfies IntlayerConfig

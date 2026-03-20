@@ -10,3 +10,4 @@
 # Cloudflare Workers
 /.alchemy/
 /.wrangler/
+.vercel
