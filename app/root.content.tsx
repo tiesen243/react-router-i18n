@@ -19,14 +19,6 @@ const appContent = {
       en: 'The requested page could not be found.',
       vi: 'Không thể tìm thấy trang yêu cầu.',
     }),
-
-    ngonNguKhongĐuocHo: t({
-      en: 'Ngôn ngữ không được hỗ trợ',
-    }),
-
-    khongTheTimThayTrang: t({
-      en: 'Không thể tìm thấy trang yêu cầu.',
-    }),
   },
 } satisfies Dictionary
 

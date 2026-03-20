@@ -14,10 +14,6 @@ const contactPage1Content = {
       en: 'This is the contact page.',
       vi: 'Đây là trang liên hệ.',
     }),
-
-    lienHeVoiChungToi: t({
-      en: 'Liên hệ với chúng tôi',
-    }),
   },
 } satisfies Dictionary
 

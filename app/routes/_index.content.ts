@@ -14,10 +14,6 @@ const indexPage1Content = {
       en: 'This is the home page. Use the navigation to explore our site.',
       vi: 'Đây là trang chủ. Sử dụng điều hướng để khám phá trang web của chúng tôi.',
     }),
-
-    chaoMungĐenVoiTrang: t({
-      en: 'Chào mừng đến với trang web của chúng tôi',
-    }),
   },
 } satisfies Dictionary
 

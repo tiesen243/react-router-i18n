@@ -24,18 +24,6 @@ const headerContent = {
         vi: 'Liên Hệ',
       }),
     },
-
-    trangChu: t({
-      en: 'Trang Chủ',
-    }),
-
-    gioiThieu: t({
-      en: 'Giới Thiệu',
-    }),
-
-    lienHe: t({
-      en: 'Liên Hệ',
-    }),
   },
 } satisfies Dictionary
 

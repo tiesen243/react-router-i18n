@@ -1,4 +1,5 @@
 import { useIntlayer } from 'react-intlayer'
+
 export default function AboutPage() {
   const content = useIntlayer('about-page')
 

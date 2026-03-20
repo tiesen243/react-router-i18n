@@ -14,10 +14,6 @@ const aboutPage1Content = {
       en: 'This is the about page.',
       vi: 'Đây là trang giới thiệu.',
     }),
-
-    veChungToi: t({
-      en: 'Về chúng tôi',
-    }),
   },
 } satisfies Dictionary
 
