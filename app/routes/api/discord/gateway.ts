@@ -9,7 +9,7 @@ export async function loader({ context }: Route.LoaderArgs) {
   if (!discord)
     return new Response('Discord adapter not found', { status: 404 })
 
-  const baseUrl = 'https://react-router-i18n.vercel.app'
+  const baseUrl = 'https://react-router-i18n-web-prod.tiesen.workers.dev'
   const webhookUrl = `${baseUrl}/api/discord/webhook`
 
   const durationMs = 10 * 60 * 1000 // 10 minutes
