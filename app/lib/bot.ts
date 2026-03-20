@@ -34,13 +34,7 @@ bot.onNewMessage(/^!yuki/, async (thread, message) => {
   await thread.startTyping()
 
   const [_prefix, command, ...args] = message.text.split(' ')
-
   let msg = `Hey ${thread.mentionUser(message.author.userId)}! `
-
-  const history = []
-  for await (const m of thread.messages) history.push(m)
-
-  console.log(history)
 
   switch (command) {
     case 'ping': {
@@ -55,10 +49,7 @@ bot.onNewMessage(/^!yuki/, async (thread, message) => {
       const { text } = await generateText({
         model: openrouter.chat('openrouter/free'),
         system: SYSTEM_PROMPT,
-        messages: history.map((m) => ({
-          role: m.author.isBot ? 'assistant' : 'user',
-          content: m.text,
-        })),
+        prompt: args.join(' '),
       })
       msg += text
       break
