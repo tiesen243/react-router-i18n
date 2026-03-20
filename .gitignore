@@ -6,3 +6,7 @@
 /.react-router/
 /.intlayer/
 /build/
+
+# Cloudflare Workers
+/.alchemy/
+/.wrangler/

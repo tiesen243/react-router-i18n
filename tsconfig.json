@@ -7,7 +7,7 @@
     "skipLibCheck": true,
     "target": "es2024",
     "lib": ["es2024", "dom", "dom.iterable"],
-    "types": ["node", "vite/client"],
+    "types": ["@cloudflare/workers-types", "node", "vite/client"],
     "jsx": "react-jsx",
     "allowJs": true,
     "resolveJsonModule": true,
