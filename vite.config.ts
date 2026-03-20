@@ -6,7 +6,7 @@ import { intlayer, intlayerCompiler } from 'vite-intlayer'
 
 export default defineConfig({
   plugins: [
-    alchemy(),
+    ...(process.env.VERCEL ? [] : [alchemy()]),
 
     reactRouter(),
     tailwindcss(),
