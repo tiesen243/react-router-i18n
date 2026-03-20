@@ -1,6 +1,9 @@
 import { createDiscordAdapter } from '@chat-adapter/discord'
 import { createMemoryState } from '@chat-adapter/state-memory'
+import { generateText } from 'ai'
 import { Chat } from 'chat'
+
+import { openrouter } from '@/lib/ai'
 
 const { env } = process
 
@@ -28,32 +31,31 @@ bot.onDirectMessage(async (thread, _message) => {
 })
 
 bot.onNewMessage(/^!yuki/, async (thread, message) => {
-  await thread.startTyping('thinking...')
+  await thread.startTyping()
 
   const [_prefix, command, ...args] = message.text.split(' ')
 
-  let msg = `Hey ${thread.mentionUser(message.author.userId)}!`
+  let msg = `Hey ${thread.mentionUser(message.author.userId)}! `
 
   switch (command) {
     case 'ping': {
-      msg += ' Pong!'
+      msg += 'Pong!'
       break
     }
     case 'echo': {
-      msg += ` You said: ${args.join(' ')}`
+      msg += `You said: ${args.join(' ')}`
       break
     }
-    case 'calc': {
-      try {
-        // oxlint-disable-next-line no-eval
-        msg += ` The result is: ${eval(args.join(' '))}`
-      } catch {
-        msg += ' Sorry, I could not calculate that.'
-      }
+    case 'ask': {
+      const { text } = await generateText({
+        model: openrouter.chat('openrouter/free'),
+        prompt: args.join(' '),
+      })
+      msg += text
       break
     }
     default: {
-      msg += " I don't recognize that command."
+      msg += "I don't recognize that command."
     }
   }
 
