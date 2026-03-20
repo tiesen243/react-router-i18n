@@ -6,17 +6,18 @@ import { cn } from '@/lib/utils'
 // Format: { THEME_NAME: CSS_SELECTOR }
 const THEMES = { light: '', dark: '.dark' } as const
 
-export type ChartConfig = {
-  [k in string]: {
+export type ChartConfig = Record<
+  string,
+  {
     label?: React.ReactNode
     icon?: React.ComponentType
   } & (
     | { color?: string; theme?: never }
     | { color?: never; theme: Record<keyof typeof THEMES, string> }
   )
-}
+>
 
-type ChartContextProps = {
+interface ChartContextProps {
   config: ChartConfig
 }
 
@@ -45,10 +46,12 @@ function ChartContainer({
   >['children']
 }) {
   const uniqueId = React.useId()
-  const chartId = `chart-${id || uniqueId.replace(/:/g, '')}`
+  const chartId = `chart-${id || uniqueId.replaceAll(':', '')}`
+
+  const value = React.useMemo(() => ({ config }), [config])
 
   return (
-    <ChartContext.Provider value={{ config }}>
+    <ChartContext.Provider value={value}>
       <div
         data-slot='chart'
         data-chart={chartId}
@@ -69,7 +72,7 @@ function ChartContainer({
 
 const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
   const colorConfig = Object.entries(config).filter(
-    ([, config]) => config.theme || config.color
+    ([, _config]) => _config.theme || _config.color
   )
 
   if (!colorConfig.length) {
@@ -78,6 +81,7 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
 
   return (
     <style
+      // oxlint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{
         __html: Object.entries(THEMES)
           .map(
@@ -175,7 +179,7 @@ function ChartTooltipContent({
         className
       )}
     >
-      {!nestLabel ? tooltipLabel : null}
+      {nestLabel ? null : tooltipLabel}
       <div className='grid gap-1.5'>
         {payload
           .filter((item) => item.type !== 'none')
@@ -312,7 +316,7 @@ function getPayloadConfigFromPayload(
   key: string
 ) {
   if (typeof payload !== 'object' || payload === null) {
-    return undefined
+    return
   }
 
   const payloadPayload =
