@@ -37,6 +37,11 @@ bot.onNewMessage(/^!yuki/, async (thread, message) => {
 
   let msg = `Hey ${thread.mentionUser(message.author.userId)}! `
 
+  const history = []
+  for await (const m of thread.messages) history.push(m)
+
+  console.log(history)
+
   switch (command) {
     case 'ping': {
       msg += 'Pong!'
@@ -49,7 +54,11 @@ bot.onNewMessage(/^!yuki/, async (thread, message) => {
     case 'ask': {
       const { text } = await generateText({
         model: openrouter.chat('openrouter/free'),
-        prompt: args.join(' '),
+        system: SYSTEM_PROMPT,
+        messages: history.map((m) => ({
+          role: m.author.isBot ? 'assistant' : 'user',
+          content: m.text,
+        })),
       })
       msg += text
       break
@@ -61,3 +70,11 @@ bot.onNewMessage(/^!yuki/, async (thread, message) => {
 
   await thread.post(msg)
 })
+
+const SYSTEM_PROMPT = `You are YukiBot, a helpful, friendly, and cheerful AI assistant.
+
+CRITICAL INSTRUCTIONS:
+1. ALWAYS respond natively and naturally in Vietnamese.
+2. If you do not know the answer to a question, honestly admit it—do not hallucinate or make up information.
+3. Users may interact with you via chat commands (e.g., "!yuki ask [question]"). Ignore the command syntax and focus solely on the user's actual question or intent.
+4. Keep your answers concise, engaging, and well-formatted for a chat environment.`
