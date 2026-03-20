@@ -6,9 +6,11 @@ on:
       - reopened
       - synchronize
       - closed
+
 concurrency:
   group: pr-preview-${{ github.event.pull_request.number }}
   cancel-in-progress: false
+
 jobs:
   deploy-preview:
     if: ${{ github.event.action != 'closed' }}
@@ -18,15 +20,7 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v5
-      - &a1
-        name: Setup Bun
-        uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
-      - &a2
-        name: Install dependencies
-        shell: bash
-        run: bun ci
+      - uses: ./.github/actions/setup
       - name: Deploy Preview
         run: bun run deploy --stage pr-${{ github.event.pull_request.number }}
         env:
@@ -40,6 +34,7 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           ALCHEMY_PASSWORD: ${{ secrets.ALCHEMY_PASSWORD }}
           ALCHEMY_STATE_TOKEN: ${{ secrets.ALCHEMY_STATE_TOKEN }}
+
   cleanup-preview:
     if: ${{ github.event.action == 'closed' }}
     runs-on: ubuntu-latest
@@ -48,8 +43,7 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v5
-      - *a1
-      - *a2
+      - uses: ./.github/actions/setup
       - name: Cleanup Preview
         run: bun run destroy
         env:

@@ -1,6 +1,7 @@
+import type { LocalesValues } from 'intlayer'
 import type { To } from 'react-router'
 
-import { getLocalizedUrl, type LocalesValues } from 'intlayer'
+import { getLocalizedUrl } from 'intlayer'
 
 const isExternalLink = (to: string) => /^(https?:)?\/\//.test(to)
 

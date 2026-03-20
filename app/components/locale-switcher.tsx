@@ -13,6 +13,7 @@ export const LocaleSwitcher: React.FC = () => {
     <ol className='flex gap-2 p-4'>
       {availableLocales.map((localeItem) => (
         <li key={localeItem}>
+          {/* oxlint-disable-next-line jsx_a11y/anchor-is-valid, jsx_a11y/click-events-have-key-events, jsx_a11y/no-static-element-interactions */}
           <Link
             className={buttonVariants({ variant: 'outline' })}
             aria-current={localeItem === locale ? 'page' : undefined}
