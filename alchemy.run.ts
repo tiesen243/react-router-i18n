@@ -16,6 +16,7 @@ export const web = await ReactRouter('web', {
   bindings: {
     images,
 
+    APP_URL: alchemy.secret(process.env.APP_URL),
     DISCORD_APPLICATION_ID: alchemy.secret(process.env.DISCORD_APPLICATION_ID),
     DISCORD_PUBLIC_KEY: alchemy.secret(process.env.DISCORD_PUBLIC_KEY),
     DISCORD_BOT_TOKEN: alchemy.secret(process.env.DISCORD_BOT_TOKEN),
