@@ -12,9 +12,9 @@ export const Header: React.FC = () => {
         <h1>{content.myApplication}</h1>
 
         <nav className='flex items-center gap-4 [&_a]:hover:underline'>
-          <LocalizedLink to='/'>Home</LocalizedLink>
-          <LocalizedLink to='/about'>About</LocalizedLink>
-          <LocalizedLink to='/contact'>Contact</LocalizedLink>
+          <LocalizedLink to='/'>{content.nav.home}</LocalizedLink>
+          <LocalizedLink to='/about'>{content.nav.about}</LocalizedLink>
+          <LocalizedLink to='/contact'>{content.nav.contact}</LocalizedLink>
         </nav>
 
         <LocaleSwitcher />
