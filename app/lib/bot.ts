@@ -18,9 +18,44 @@ export const bot = new Chat({
 })
 
 bot.onNewMention(async (thread, _message) => {
+  await thread.subscribe()
   await thread.post('Hello from Discord!')
 })
 
 bot.onDirectMessage(async (thread, _message) => {
+  await thread.subscribe()
   await thread.post('Hello from Discord!')
+})
+
+bot.onNewMessage(/^!yuki/, async (thread, message) => {
+  await thread.startTyping('thinking...')
+
+  const [_prefix, command, ...args] = message.text.split(' ')
+
+  let msg = `Hey ${thread.mentionUser(message.author.userId)}!`
+
+  switch (command) {
+    case 'ping': {
+      msg += ' Pong!'
+      break
+    }
+    case 'echo': {
+      msg += ` You said: ${args.join(' ')}`
+      break
+    }
+    case 'calc': {
+      try {
+        // oxlint-disable-next-line no-eval
+        msg += ` The result is: ${eval(args.join(' '))}`
+      } catch {
+        msg += ' Sorry, I could not calculate that.'
+      }
+      break
+    }
+    default: {
+      msg += " I don't recognize that command."
+    }
+  }
+
+  await thread.post(msg)
 })
