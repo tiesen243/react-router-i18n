@@ -4,16 +4,26 @@ import alchemy from 'alchemy'
 import { Images, ReactRouter } from 'alchemy/cloudflare'
 import { GitHubComment } from 'alchemy/github'
 import { CloudflareStateStore } from 'alchemy/state'
+import { config } from 'dotenv'
+
+config({ path: '.env' })
 
 const app = await alchemy('react-router-i18n', {
   stateStore: (scope) => new CloudflareStateStore(scope),
 })
 
-export const images = await Images()
+export const images = Images()
 
 export const web = await ReactRouter('web', {
   bindings: {
     images,
+
+    DISCORD_APPLICATION_ID: alchemy.secret(process.env.DISCORD_APPLICATION_ID),
+    DISCORD_PUBLIC_KEY: alchemy.secret(process.env.DISCORD_PUBLIC_KEY),
+    DISCORD_BOT_TOKEN: alchemy.secret(process.env.DISCORD_BOT_TOKEN),
+    DISCORD_MENTION_ROLE_IDS: alchemy.secret(
+      process.env.DISCORD_MENTION_ROLE_IDS
+    ),
   },
 })
 
