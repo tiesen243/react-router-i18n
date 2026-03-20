@@ -34,6 +34,10 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           ALCHEMY_PASSWORD: ${{ secrets.ALCHEMY_PASSWORD }}
           ALCHEMY_STATE_TOKEN: ${{ secrets.ALCHEMY_STATE_TOKEN }}
+          DISCORD_APPLICATION_ID: ${{ secrets.DISCORD_APPLICATION_ID }}
+          DISCORD_PUBLIC_KEY: ${{ secrets.DISCORD_PUBLIC_KEY }}
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          DISCORD_MENTION_ROLE_IDS: ${{ secrets.DISCORD_MENTION_ROLE_IDS }}
 
   cleanup-preview:
     if: ${{ github.event.action == 'closed' }}
