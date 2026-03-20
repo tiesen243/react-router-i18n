@@ -32,7 +32,7 @@ jobs:
       - name: lint
         run: bun run lint --format=github
 
-  format:
+  typecheck:
     runs-on: ubuntu-latest
     permissions:
       contents: read
