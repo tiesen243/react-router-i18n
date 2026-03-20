@@ -1,8 +1,11 @@
 import alchemy from 'alchemy'
 import { ReactRouter } from 'alchemy/cloudflare'
 import { GitHubComment } from 'alchemy/github'
+import { CloudflareStateStore } from 'alchemy/state'
 
-const app = await alchemy('react-router-i18n')
+const app = await alchemy('react-router-i18n', {
+  stateStore: (scope) => new CloudflareStateStore(scope),
+})
 
 export const web = await ReactRouter('web')
 
