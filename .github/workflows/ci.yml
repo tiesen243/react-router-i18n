@@ -7,10 +7,6 @@ on:
       - synchronize
       - closed
 
-concurrency:
-  group: pr-preview-${{ github.event.pull_request.number }}
-  cancel-in-progress: false
-
 jobs:
   format:
     runs-on: ubuntu-latest
