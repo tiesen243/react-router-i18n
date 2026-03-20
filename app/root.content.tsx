@@ -1,25 +1,33 @@
-import type { Dictionary } from 'intlayer'
+import type { Dictionary } from "intlayer";
 
-import { t } from 'intlayer'
+import { t } from "intlayer";
 
 const appContent = {
-  key: 'app',
+  key: "app",
   content: {
     languageNotSupported: t({
-      en: 'Language not supported',
-      vi: 'Ngôn ngữ không được hỗ trợ',
+      en: "Language not supported",
+      vi: "Ngôn ngữ không được hỗ trợ",
     }),
 
     anUnexpectedErrorOccurred: t({
-      en: 'An unexpected error occurred.',
-      vi: 'Đã xảy ra lỗi không mong muốn.',
+      en: "An unexpected error occurred.",
+      vi: "Đã xảy ra lỗi không mong muốn.",
     }),
 
     theRequestedPageCouldNot: t({
-      en: 'The requested page could not be found.',
-      vi: 'Không thể tìm thấy trang yêu cầu.',
+      en: "The requested page could not be found.",
+      vi: "Không thể tìm thấy trang yêu cầu.",
+    }),
+
+    ngonNguKhongĐuocHo: t({
+      en: "Ngôn ngữ không được hỗ trợ",
+    }),
+
+    khongTheTimThayTrang: t({
+      en: "Không thể tìm thấy trang yêu cầu.",
     }),
   },
-} satisfies Dictionary
+} satisfies Dictionary;
 
-export default appContent
+export default appContent;

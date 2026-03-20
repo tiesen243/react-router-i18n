@@ -14,6 +14,14 @@ const config = {
     saveComponents: false,
     dictionaryKeyPrefix: '',
   },
+
+  build: {
+    traversePattern: [
+      '**/*.{ts,tsx}',
+      '!**/node_modules/**',
+      '!**/app/routes/api/**',
+    ],
+  },
 } satisfies IntlayerConfig
 
 export default config

@@ -1,7 +1,7 @@
 // oxlint-disable node/no-process-env
 
 import alchemy from 'alchemy'
-import { ReactRouter } from 'alchemy/cloudflare'
+import { Images, ReactRouter } from 'alchemy/cloudflare'
 import { GitHubComment } from 'alchemy/github'
 import { CloudflareStateStore } from 'alchemy/state'
 
@@ -9,7 +9,13 @@ const app = await alchemy('react-router-i18n', {
   stateStore: (scope) => new CloudflareStateStore(scope),
 })
 
-export const web = await ReactRouter('web')
+export const images = await Images()
+
+export const web = await ReactRouter('web', {
+  bindings: {
+    images,
+  },
+})
 
 console.log(`Web deployed at: ${web.url}`)
 

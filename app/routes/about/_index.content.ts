@@ -1,20 +1,24 @@
-import type { Dictionary } from 'intlayer'
+import type { Dictionary } from "intlayer";
 
-import { t } from 'intlayer'
+import { t } from "intlayer";
 
 const aboutPage1Content = {
-  key: 'about-page',
+  key: "about-page",
   content: {
     aboutUs: t({
-      en: 'About Us',
-      vi: 'Về chúng tôi',
+      en: "About Us",
+      vi: "Về chúng tôi",
     }),
 
     thisIsTheAboutPage: t({
-      en: 'This is the about page.',
-      vi: 'Đây là trang giới thiệu.',
+      en: "This is the about page.",
+      vi: "Đây là trang giới thiệu.",
+    }),
+
+    veChungToi: t({
+      en: "Về chúng tôi",
     }),
   },
-} satisfies Dictionary
+} satisfies Dictionary;
 
-export default aboutPage1Content
+export default aboutPage1Content;

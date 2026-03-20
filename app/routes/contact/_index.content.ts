@@ -1,20 +1,24 @@
-import type { Dictionary } from 'intlayer'
+import type { Dictionary } from "intlayer";
 
-import { t } from 'intlayer'
+import { t } from "intlayer";
 
 const contactPage1Content = {
-  key: 'contact-page',
+  key: "contact-page",
   content: {
     contactUs: t({
-      en: 'Contact Us',
-      vi: 'Liên hệ với chúng tôi',
+      en: "Contact Us",
+      vi: "Liên hệ với chúng tôi",
     }),
 
     thisIsTheContactPage: t({
-      en: 'This is the contact page.',
-      vi: 'Đây là trang liên hệ.',
+      en: "This is the contact page.",
+      vi: "Đây là trang liên hệ.",
+    }),
+
+    lienHeVoiChungToi: t({
+      en: "Liên hệ với chúng tôi",
     }),
   },
-} satisfies Dictionary
+} satisfies Dictionary;
 
-export default contactPage1Content
+export default contactPage1Content;
